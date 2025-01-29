@@ -1,14 +1,17 @@
 FROM node:20-alpine
 
+# Instala o pnpm globalmente
+RUN npm install -g pnpm
+
 WORKDIR /code
 
-COPY package.json package.json
+COPY package.json pnpm-lock.yaml ./
 
-RUN npm install
+# Instala as dependências usando pnpm
+RUN pnpm install
 
 COPY . .
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "dev" ] 
-
+CMD [ "pnpm", "start"]
