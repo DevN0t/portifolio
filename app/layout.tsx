@@ -1,24 +1,24 @@
 import "../global.css";
-import { Inter } from "@next/font/google";
-import LocalFont from "@next/font/local";
+import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "Caynã Backend",
+    template: "%s | cayna.dev",
   },
   description: "Co-founder of unkey.dev and founder of planetfall.io",
   openGraph: {
-    title: "chronark.com",
+    title: "cayna.dev",
     description:
       "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+    url: "https://cayna.dev",
+    siteName: "cayna.dev",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://cayna.dev/og.png",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Devn0t",
     card: "summary_large_image",
   },
   icons: {

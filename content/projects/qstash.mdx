@@ -1,36 +1,53 @@
 ---
-title: QStash
-description: QStash is a fully managed serverless queue and messaging service designed for the serverless era.
-date: "2022-07-18"
-url: https://upstash.com/qstash
+title: "Spring Boot 3, Spring Security 6, and JWT Token Authentication"
+description: This project demonstrates how to integrate Spring Boot, Spring Security, and JWT (JSON Web Token) for secure user authentication and authorization. User registration and login with JWT-based authentication. Role-based authorization for controlling user access to different parts of the application.
+repository: DevN0t/spring-boot3-spring-security6-jwt-token
+date: "May 30, 2024"
 published: true
-
+  
 ---
+This project demonstrates how to integrate Spring Boot, Spring Security, and JWT (JSON Web Token) for secure user authentication and authorization.
 
-QStash is an HTTP based messaging and scheduling solution for the serverless and edge runtimes.
+- User registration and login with JWT-based authentication.
+- Role-based authorization for controlling user access to different parts of the application.
+- Secure password hashing and salting using industry best practices.
+- Integration with PostgreSQL database for storing user information.
 
-- 100% serverless, no stateful connections required. Messages are pushed to your API.
-- At-least-once delivery guaranteed to any public API
-- Pubsub via topics
-- Delay message delivery
-- Message deduplication
-- Scheduling via CRON
+## Install
 
+- Follow these steps to set up and run the project on your local machine:
 
-Formally, QStash is a message queue and task scheduler designed for serverless runtimes. Informally, QStash is a glue for your serverless functions.
-
-There was a perception serverless was only good for simple tasks. Not anymore. People build powerful systems with serverless stack. Powerful systems are composed of multiple components. Communication among those components is a big engineering problem. There are already great solutions for this problem. But we think existing solutions do not fit in serverless space. Either they are too complex or not designed to work with stateless runtimes. So we want a solution which (is):
-
-- Works anywhere including serverless and edge.
-- Messaging as a service with no backend for users to run.
-- Lightweight, easy to understand, requires nothing to learn.
-- Price scales to zero.
-
-Let's talk about a real world example. We have an e-commerce app and we want to send an informational email after each purchase. We have a service (an API route) for new purchases (newPurchase) and a second service for sending emails and notifications (sendEmail). We can call the sendEmail service from the newPurchase service. But what if the call fails? Should we wait for the response and retry? What if too many calls congest the sendEmail service and the service does not respond on time? You need to handle all these cases in your newPurchase service. Moreover, when you change the contract of sendEmail service; you have to update your newPurchase service too.
-
-If you use QStash in the above example, you simply send a request to QStash from the newPurchase service. QStash will queue the request and call the sendEmail service. If the service does not respond, QStash will retry with a backoff strategy. The latency of sendEmail service will not affect the newPurchase service, because it will not wait for a response from the sendEmail service. QStash decouples the newPurchase and sendEmail services. You can update both services independently as long as you keep the message format compatible.
-
-With QStash, you can add delays to the requests. Send an email 3 days after the shipment to remind the customer to add a review. You can also schedule tasks. You can send the requests with a CRON expression, so it will be run repetitively.
+Clone the repository: git clone https://github.com/DevN0t/spring-boot-3-spring-security6-jwt-token.git
+Navigate to the project directory: cd spring-boot-3-spring-security6-jwt-token
+Update the database configuration in application.properties file.
+Build the project: ./mvnw clean install (or equivalent for Windows: mvnw.cmd clean install)
+Run the application: ./mvnw spring-boot:run (or equivalent for Windows: mvnw.cmd spring-boot:run)
 
 
-To learn more about QStash, visit [upstash.com/qstash](upstash.com/qstash).
+## Configuration
+
+- Database Configuration: Update the application.properties file with your PostgreSQL database credentials.
+
+## Usage
+
+1. Clone the repository: `git clone https://github.com/DevN0t/spring-boot-3-spring-security6-jwt-token.git`
+2. Navigate to the project directory: `cd spring-boot-3-spring-security6-jwt-token`
+3. Update the database configuration in `application.properties` file.
+4. Build the project: `./mvnw clean install` (or equivalent for Windows: `mvnw.cmd clean install`)
+5. Run the application: `./mvnw spring-boot:run` (or equivalent for Windows: `mvnw.cmd spring-boot:run`)
+
+
+## Endpoints
+
+- `POST /user/register`: Register a new user.
+- `POST /user/login`: Obtain a JWT by logging in.
+- `GET /user/get`: Get all registred users(Admin Role needed).
+- More endpoints for specific resources can be added as per your application's requirements.
+
+
+
+## Contact
+
+Connect with the project author on [LinkedIn](https://www.linkedin.com/in/cayn%C3%A3mariano/) for any questions or suggestions.
+
+**License:** This project is licensed under the terms of the [GNU General Public License (GPL)](LICENSE).
